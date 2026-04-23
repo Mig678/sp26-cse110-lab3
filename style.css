@@ -10,3 +10,14 @@ h1 {
 p {
     line-height: 1.6;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
