@@ -1,28 +1,234 @@
+/* lab 3 css file */
+
+:root {
+  --main-color: #003366;
+  --section-bg: rgb(255, 255, 255);
+}
+
 body {
-    background-color: lightgray;
-    font-family: Arial, sans-serif;
+  background-color: lightgray;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0 16px;
+  max-width: 860px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* header styles */
+header {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
-    color: darkblue;
+  color: rgb(255, 255, 255);
+  font-size: 24pt;
+  margin-bottom: 4px;
+}
+
+h2 {
+  color: var(--main-color, darkblue);
+  border-bottom-style: solid;
+  border-bottom-color: #003366;
+  border-bottom-width: 2px;
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+/* nav links using flexbox */
+.flex-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.flex-nav a {
+  color: hsl(60, 100%, 85%);
+  text-decoration: none;
+}
+
+.flex-nav a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.flex-nav a:active {
+  color: hsl(60, 100%, 100%);
+}
+
+/* grid for the three info boxes */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  grid-auto-rows: minmax(60px, auto);
+  margin-bottom: 16px;
+}
+
+.stat-box {
+  background-color: rgba(0, 51, 102, 0.1);
+  border: 1px solid #003366;
+  border-radius: 4px;
+  text-align: center;
+  padding: 8px;
+  min-height: 1cm;
+}
+
+.stat-box p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+section {
+  background-color: var(--section-bg, white);
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 16px;
+  margin-left: 0;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 p {
-    line-height: 1.6;
+  line-height: 1.6em;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
+/* submit button */
+button[type="submit"] {
+  display: inline-block;
+  background-color: color(srgb 0 0.2 0.4);
+  color: white;
+  border-style: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  height: 36px;
+  width: auto;
+  cursor: pointer;
 }
 
-.grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+button[type="submit"]:hover {
+  background-color: color-mix(in srgb, #003366 70%, white);
 }
-@media (max-width: 768px) {
-    body {
-        background-color: white;
-    }
+
+button[type="submit"]:active {
+  background-color: color(srgb 0 0.1 0.2);
+}
+
+hr {
+  display: none;
+}
+
+/* footer */
+footer {
+  display: block;
+  background-color: hsla(210, 100%, 15%, 0.9);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+}
+
+/* smaller screens */
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .flex-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  body {
+    padding: 0 8px;
+  }
+}
+
+/* --- selector examples --- */
+
+/* class selector */
+.highlight {
+  border-left: 3px solid #003366;
+}
+
+/* id selector */
+#attendance {
+  font-size: 1rem;
+}
+
+/* universal selector */
+* {
+  box-sizing: border-box;
+}
+
+/* element selector */
+strong {
+  color: #003366;
+}
+
+/* attribute selector */
+input[type="text"] {
+  border: 1px solid #aaa;
+}
+
+/* pseudclass selector */
+summary:hover {
+  cursor: pointer;
+}
+
+/* selector list */
+h1, h2 {
+  font-weight: bold;
+}
+
+/*descendant combinator */
+section p {
+  margin-bottom: 6px;
+}
+
+/* child combinator */
+nav > a {
+  font-size: 0.95rem;
+}
+
+/* general sibling combinator */
+h2 ~ p {
+  color: inherit;
+}
+
+/* adjacent sibling combinator */
+h2 + p {
+  margin-top: 4px;
+}
+
+/* combining selectors */
+section.highlight {
+  border-radius: 6px;
+}
+
+/* has selector */
+section:has(details) {
+  padding-bottom: 14px;
+}
+
+/* nested selector */
+.stats-grid {
+  & .stat-box {
+    font-size: 0.95rem;
+  }
 }
